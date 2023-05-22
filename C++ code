@@ -1,0 +1,47 @@
+👉Intutive Approach
+class Solution {
+public:
+    bool checkString(string s) {
+        int a1=INT_MAX,a2=0;
+        int b1=INT_MAX;
+
+        for(int i=0;i<s.length();i++){
+            if(s[i]=='a' && i<a1){
+                a1=i;
+            }
+            else if(s[i]=='a'&& i>=a2){
+                a2=i;
+            }
+            else{
+                if(s[i]=='b' && i<b1){
+                    b1=i;
+                }
+            }
+        }
+        if((b1>a1 && b1<a2))return false;
+        if(a1!=INT_MAX && b1<a1)return false;
+        return true;
+
+    }
+};
+
+👉 some corrections
+
+class Solution {
+public:
+    bool checkString(string s) {
+        int a1=INT_MIN;
+        int b1=INT_MAX;
+
+        for(int i=0;i<s.length();i++){
+            if(s[i]=='a' && a1<i){
+                a1=i;
+            }
+            if(s[i]=='b'&& i<b1){
+                b1=i;
+            }
+        }
+       
+        return b1>a1;
+    }
+};
